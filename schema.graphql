@@ -1,0 +1,27 @@
+type OrderSettled @entity {
+  id: String! # txHash + orderUUID
+  account: Account!
+  txHash: String!
+  orderUUID: String!
+  sellToken: String!
+  buyToken: String!
+  sellAmount: BigInt!
+  buyAmount: BigInt!
+  executionPrice: BigInt!
+  date: String!
+}
+
+type Account @entity {
+  id: String! # address
+  orders: [String!] 
+  ordersCount: Int! 
+}
+
+# type Token @entity {
+#   id: String! # address
+#   sellOrders: [OrderSettled!]! @derivedFrom(field: "sellToken")
+#   buyOrders: [OrderSettled!]! @derivedFrom(field: "buyToken")
+#   sellOrdersCount: Int! @derivedFrom(field: "sellToken")
+#   buyOrdersCount: Int! @derivedFrom(field: "sellToken")
+
+# }
